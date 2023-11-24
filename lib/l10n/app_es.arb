@@ -1,0 +1,7 @@
+{
+  "@@locale": "es",
+  "selectLanguage": "Selecciona el idioma",
+  "@selectLanguage": {
+    "description": "esta wea en español"
+  }
+}

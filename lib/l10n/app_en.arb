@@ -1,0 +1,7 @@
+{
+  "@@locale": "en",
+  "selectLanguage": "Select Language",
+  "@selectLanguage": {
+    "description": "The title for the language selection screen"
+  }
+}

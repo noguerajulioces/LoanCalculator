@@ -1,5 +1,6 @@
 // custom_drawer.dart
 import 'package:flutter/material.dart';
+import 'package:todo/src/screens/languages_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   final Function(int) onItemSelected;
@@ -24,7 +25,14 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             title: Text('Idiomas'),
             leading: Icon(Icons.language),
-            onTap: () => onItemSelected(0),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LanguageScreen(),
+                ),
+              );
+            },
           ),
           ListTile(
             title: Text('Comparte y Gana'),

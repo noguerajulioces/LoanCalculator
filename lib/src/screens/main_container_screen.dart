@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/src/screens/languages_screen.dart';
 import '../screens/loans_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/donate_screen.dart';
@@ -19,6 +20,7 @@ class _MainContainerScreenState extends State<MainContainerScreen> {
     HomeScreen(),
     LoansScreen(),
     DonateScreen(),
+    LanguageScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -36,15 +38,13 @@ class _MainContainerScreenState extends State<MainContainerScreen> {
       body: IndexedStack(
         index: _currentIndex,
         children: _screens,
-      ), // Muestra la pantalla seleccionada sin perder el estado
+      ),
       drawer: CustomDrawer(
         onItemSelected: (index) {
-          // Aquí puedes manejar la lógica de selección de ítems del drawer
-          // Por ejemplo, cambiar el índice actual o cerrar el drawer
           setState(() {
             _currentIndex = index;
           });
-          Navigator.pop(context); // Cierra el Drawer
+          Navigator.pop(context);
         },
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
