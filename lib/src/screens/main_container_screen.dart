@@ -39,41 +39,68 @@ class _MainContainerScreenState extends State<MainContainerScreen> {
       drawer: Drawer(
         // Aquí construyes tu Drawer con todos los elementos que necesitas
         child: ListView(
+          physics: NeverScrollableScrollPhysics(),
           children: [
-            DrawerHeader(
-              child: Text('Encabezado del Drawer'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
             ListTile(
-              title: Text('Inicio'),
+              title: Text('Quitar Anuncios'),
+              leading: Icon(Icons.gif),
               onTap: () {
                 setState(() {
                   _currentIndex = 0;
                 });
-                Navigator.pop(context); // Cierra el Drawer
+                Navigator.pop(context);
               },
             ),
             ListTile(
-              title: Text('Mis Préstamos'),
+              title: Text('Idiomas'),
+              leading: Icon(Icons.language),
+              onTap: () {
+                setState(() {
+                  _currentIndex = 0;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Comparte y Gana'),
+              leading: Icon(Icons.card_giftcard),
+              onTap: () {
+                setState(() {
+                  _currentIndex = 0;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Comentarios'),
+              leading: Icon(Icons.message),
               onTap: () {
                 setState(() {
                   _currentIndex = 1;
                 });
-                Navigator.pop(context); // Cierra el Drawer
+                Navigator.pop(context);
               },
             ),
             ListTile(
-              title: Text('Donar'),
+              title: Text('Califícanos'),
+              leading: Icon(Icons.star),
               onTap: () {
                 setState(() {
                   _currentIndex = 2;
                 });
-                Navigator.pop(context); // Cierra el Drawer
+                Navigator.pop(context);
               },
             ),
-            // Agrega más ítems según sea necesario
+            Spacer(),
+            Container(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Divider(),
+                  Text('Versión de la app 0.1.0'),
+                ],
+              ),
+            ),
           ],
         ),
       ),
