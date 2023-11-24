@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../app/app_bar.dart'; // Asegúrate de que la ruta de importación sea correcta
 
 class DonateScreen extends StatelessWidget {
   const DonateScreen({Key? key}) : super(key: key);
@@ -7,9 +6,6 @@ class DonateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Mis Préstamos',
-      ),
       body: ListView(
         children: [
           Padding(

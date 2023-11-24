@@ -18,21 +18,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.black12,
-      title: const Text('Calculadora de préstamos'),
+      title: Text(title),
       leading: IconButton(
         icon: const Icon(Icons.menu),
-        onPressed: () {
-          // Acción para el botón de menú
-        },
+        onPressed: onMenuPressed ??
+            () => Scaffold.of(context)
+                .openDrawer(), // Esta es la acción correcta para abrir el Drawer.
       ),
-      actions: [
-        IconButton(
-          onPressed: () {
-            // Acción para el botón de borrar
-          },
-          icon: const Icon(Icons.delete),
-        ),
-      ],
+      actions: actions ??
+          [
+            IconButton(
+              onPressed:
+                  onLeadingPressed, // Esta debería ser la acción personalizada que se pasa al AppBar.
+              icon: const Icon(Icons.delete),
+            ),
+          ],
     );
   }
 
