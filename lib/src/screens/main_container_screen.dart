@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo/src/screens/languages_screen.dart';
 import '../screens/loans_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/donate_screen.dart';
@@ -8,6 +7,8 @@ import '../app/app_bar.dart';
 import '../app/custom_drawer.dart';
 
 class MainContainerScreen extends StatefulWidget {
+  const MainContainerScreen({super.key});
+
   @override
   _MainContainerScreenState createState() => _MainContainerScreenState();
 }
@@ -17,10 +18,16 @@ class _MainContainerScreenState extends State<MainContainerScreen> {
 
   // Lista de pantallas para cada índice
   final List<Widget> _screens = [
-    HomeScreen(),
-    LoansScreen(),
-    DonateScreen(),
-    LanguageScreen(),
+    const HomeScreen(),
+    const LoansScreen(),
+    const DonateScreen(),
+  ];
+
+  // Lista de titles
+  final List<String> _titles = [
+    'Préstamos',
+    'Mis préstamos',
+    'Donar',
   ];
 
   void _onItemTapped(int index) {
@@ -33,7 +40,7 @@ class _MainContainerScreenState extends State<MainContainerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'Mis Préstamos',
+        title: _titles[_currentIndex],
       ),
       body: IndexedStack(
         index: _currentIndex,

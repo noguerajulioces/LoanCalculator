@@ -1,7 +1,11 @@
 {
   "@@locale": "en",
+  "language": "Language",
+  "@language": {
+    "description": "The current Language"
+  },
   "selectLanguage": "Select Language",
   "@selectLanguage": {
-    "description": "The title for the language selection screen"
+    "description": "La description"
   }
 }

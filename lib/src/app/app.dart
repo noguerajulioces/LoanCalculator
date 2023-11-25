@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:todo/l10n/l10n.dart';
 import '../../src/screens/main_container_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Calculadora de Préstamos',
-      localizationsDelegates: [
+      supportedLocales: L10n.all,
+      locale: const Locale('es'),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        Locale('en'), // English
-        Locale('es'), // Spanish
       ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: MainContainerScreen(), // Usa HomeScreen como la pantalla inicial
+      home: const MainContainerScreen(),
     );
   }
 }
