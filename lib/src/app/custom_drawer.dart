@@ -6,56 +6,56 @@ class CustomDrawer extends StatelessWidget {
   final Function(int) onItemSelected;
 
   const CustomDrawer({
-    Key? key,
+    super.key,
     required this.onItemSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       // Aquí construyes tu Drawer con todos los elementos que necesitas
       child: ListView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           ListTile(
-            title: Text('Quitar Anuncios'),
-            leading: Icon(Icons.gif),
-            onTap: () => onItemSelected(0),
+            title: const Text('Quitar Anuncios'),
+            leading: const Icon(Icons.gif),
+            onTap: () => onItemSelected(2),
           ),
           ListTile(
-            title: Text('Idiomas'),
-            leading: Icon(Icons.language),
+            title: const Text('Idiomas'),
+            leading: const Icon(Icons.language),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => LanguageScreen(),
+                  builder: (context) => const LanguageScreen(),
                 ),
               );
             },
           ),
           ListTile(
-            title: Text('Comparte y Gana'),
-            leading: Icon(Icons.card_giftcard),
+            title: const Text('Comparte y Gana'),
+            leading: const Icon(Icons.card_giftcard),
             onTap: () => onItemSelected(0),
           ),
           ListTile(
-            title: Text('Comentarios'),
-            leading: Icon(Icons.message),
+            title: const Text('Comentarios'),
+            leading: const Icon(Icons.message),
             onTap: () => onItemSelected(0),
           ),
           ListTile(
-            title: Text('Califícanos'),
-            leading: Icon(Icons.star),
+            title: const Text('Califícanos'),
+            leading: const Icon(Icons.star),
             onTap: () => onItemSelected(0),
           ),
-          Spacer(),
+          const Spacer(),
           Container(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
+            padding: const EdgeInsets.all(8.0),
+            child: const Column(
               children: [
                 Divider(),
-                Text('Versión de la app 0.1.0'),
+                Text('Versión 0.1.0'),
               ],
             ),
           ),

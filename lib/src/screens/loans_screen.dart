@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class LoansScreen extends StatelessWidget {
-  const LoansScreen({Key? key}) : super(key: key);
+  const LoansScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: [
+        children: const [
           Card(
             margin: EdgeInsets.all(8.0),
             child: Column(
@@ -74,10 +74,8 @@ class LoansScreen extends StatelessWidget {
               ],
             ),
           ),
-          // Aquí puedes añadir otros elementos como la sección de publicidad, etc.
         ],
       ),
-      // Incluye tu BottomNavigationBar aquí si es necesario
     );
   }
 }

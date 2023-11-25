@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
             buildInputField(
               context,
               'Cantidad del préstamo',
+              'GS. ',
               Icons.monetization_on,
             ),
             const SizedBox(
@@ -22,6 +23,7 @@ class HomeScreen extends StatelessWidget {
             buildInputField(
               context,
               'Tasa de interés',
+              '',
               Icons.percent,
             ),
             const SizedBox(
@@ -30,6 +32,7 @@ class HomeScreen extends StatelessWidget {
             buildInputField(
               context,
               'Duración',
+              '',
               Icons.timer,
             ),
             const SizedBox(height: 20),
@@ -45,11 +48,13 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget buildInputField(BuildContext context, String label, IconData icon) {
+  Widget buildInputField(
+      BuildContext context, String label, String coinSymbol, IconData icon) {
     return TextFormField(
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(icon),
+        prefixText: coinSymbol,
         border: const OutlineInputBorder(),
       ),
       keyboardType: TextInputType.number,

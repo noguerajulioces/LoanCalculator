@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DonateScreen extends StatelessWidget {
-  const DonateScreen({Key? key}) : super(key: key);
+  const DonateScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +12,12 @@ class DonateScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               'Todo esto es posible gracias a ti!',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
               'La Calculadora de Préstamos es completamente gratis y estamos trabajando muy duro para hacer nuevas aplicaciones! Si te gusta nuestra aplicación, puedes apoyar a nuestro equipo con un poco de amor para alimentar nuestros esfuerzos! A cambio, vamos a habilitar las notificaciones sobre cuándo tienes que pagar tus préstamos y eliminaremos los anuncios!',
               // El resto del texto explicativo
@@ -31,8 +31,8 @@ class DonateScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
               'Tus donaciones nos ayudan muchísimo\nAlimenta nuestras mascotas',
               textAlign: TextAlign.center,
@@ -68,16 +68,14 @@ class DonateScreen extends StatelessWidget {
               onPressed: () {
                 // Acción para restaurar compras
               },
-              child: const Text('RESTAURAR COMPRA'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue, // Color del botón
+                backgroundColor: Colors.blue, // Color del botón
               ),
+              child: const Text('RESTAURAR COMPRA'),
             ),
           ),
-          // Agrega más widgets según sea necesario
         ],
       ),
-      // El BottomNavigationBar se manejaría en el widget contenedor
     );
   }
 }
