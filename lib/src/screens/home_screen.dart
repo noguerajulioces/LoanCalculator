@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import '../app/app_bar.dart';
-import 'package:flutter/services.dart'; // Importa services para usar FilteringTextInputFormatter
+import 'package:flutter/services.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +12,27 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           children: [
             buildInputField(
-                context, 'Cantidad del préstamo', Icons.monetization_on),
-            SizedBox(height: 20),
-            buildInputField(context, 'Tasa de interés', Icons.percent),
-            SizedBox(height: 20),
-            buildInputField(context, 'Duración', Icons.timer),
-            SizedBox(height: 20),
+              context,
+              'Cantidad del préstamo',
+              Icons.monetization_on,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            buildInputField(
+              context,
+              'Tasa de interés',
+              Icons.percent,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            buildInputField(
+              context,
+              'Duración',
+              Icons.timer,
+            ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Acción cuando se presiona el botón de pago
@@ -36,11 +50,11 @@ class HomeScreen extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(icon),
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       keyboardType: TextInputType.number,
       inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly, // Permite solo dígitos
+        FilteringTextInputFormatter.digitsOnly,
       ],
     );
   }
