@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../app/app_bar.dart'; // Asegúrate de que la ruta de importación sea correcta
+import '../app/app_bar.dart';
+import 'package:flutter/services.dart'; // Importa services para usar FilteringTextInputFormatter
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,8 +38,10 @@ class HomeScreen extends StatelessWidget {
         prefixIcon: Icon(icon),
         border: OutlineInputBorder(),
       ),
-      keyboardType:
-          label == 'Duración' ? TextInputType.number : TextInputType.text,
+      keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly, // Permite solo dígitos
+      ],
     );
   }
 }
