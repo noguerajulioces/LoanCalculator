@@ -1,5 +1,6 @@
 {
   "@@locale": "en",
+  "loanCalculator": "Loan Calculator",
   "language": "Language",
   "selectLanguage": "Select Language",
   "removeAds": "Remove Ads",

@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onItemSelected;
 
   const CustomBottomNavigationBar({
-    Key? key,
+    super.key,
     required this.currentIndex,
     required this.onItemSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onItemSelected,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Inicio',
+          icon: const Icon(Icons.home),
+          label: AppLocalizations.of(context)!.home,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.monetization_on),
-          label: 'Mis Préstamos',
+          icon: const Icon(Icons.monetization_on),
+          label: AppLocalizations.of(context)!.myLoans,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          label: 'Donar',
+          icon: const Icon(Icons.favorite),
+          label: AppLocalizations.of(context)!.donate,
         ),
       ],
       // Aquí puedes añadir más personalizaciones como el color de fondo, el color de los ítems, etc.

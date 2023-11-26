@@ -1,5 +1,6 @@
 // custom_drawer.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:todo/src/screens/languages_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -18,12 +19,16 @@ class CustomDrawer extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           ListTile(
-            title: const Text('Quitar Anuncios'),
+            title: Text(
+              AppLocalizations.of(context)!.removeAds,
+            ),
             leading: const Icon(Icons.gif),
             onTap: () => onItemSelected(2),
           ),
           ListTile(
-            title: const Text('Idiomas'),
+            title: Text(
+              AppLocalizations.of(context)!.language,
+            ),
             leading: const Icon(Icons.language),
             onTap: () {
               Navigator.push(
@@ -35,17 +40,23 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Comparte y Gana'),
+            title: Text(
+              AppLocalizations.of(context)!.shareAndWin,
+            ),
             leading: const Icon(Icons.card_giftcard),
             onTap: () => onItemSelected(0),
           ),
           ListTile(
-            title: const Text('Comentarios'),
+            title: Text(
+              AppLocalizations.of(context)!.comments,
+            ),
             leading: const Icon(Icons.message),
             onTap: () => onItemSelected(0),
           ),
           ListTile(
-            title: const Text('Califícanos'),
+            title: Text(
+              AppLocalizations.of(context)!.rateUs,
+            ),
             leading: const Icon(Icons.star),
             onTap: () => onItemSelected(0),
           ),

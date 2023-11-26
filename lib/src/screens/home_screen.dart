@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,7 +14,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             buildInputField(
               context,
-              'Cantidad del préstamo',
+              AppLocalizations.of(context)!.loanAmount,
               'GS. ',
               Icons.monetization_on,
             ),
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             ),
             buildInputField(
               context,
-              'Tasa de interés',
+              AppLocalizations.of(context)!.interestRate,
               '',
               Icons.percent,
             ),
@@ -31,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             ),
             buildInputField(
               context,
-              'Duración',
+              AppLocalizations.of(context)!.duration,
               '',
               Icons.timer,
             ),
@@ -40,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 // Acción cuando se presiona el botón de pago
               },
-              child: const Text('Calcula tu pago'),
+              child: Text(AppLocalizations.of(context)!.calculatePayment),
             ),
           ],
         ),

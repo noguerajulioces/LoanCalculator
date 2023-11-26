@@ -1,6 +1,7 @@
 {
   "@@locale": "es",
-  "language": "Idioma",
+  "loanCalculator": "Calculara de Préstamos",
+  "language": "Idiomas",
   "selectLanguage": "Selecciona el idioma",
   "removeAds": "Quitar Anuncios",
   "shareAndWin": "Comparte y gana",
