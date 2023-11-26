@@ -5,6 +5,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final VoidCallback? onMenuPressed;
   final VoidCallback? onLeadingPressed;
+  final IconData leadingIcon;
 
   const CustomAppBar({
     Key? key,
@@ -12,6 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.onMenuPressed,
     this.onLeadingPressed,
+    this.leadingIcon = Icons.delete,
   }) : super(key: key);
 
   @override
@@ -28,9 +30,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: actions ??
           [
             IconButton(
-              onPressed:
-                  onLeadingPressed, // Esta debería ser la acción personalizada que se pasa al AppBar.
-              icon: const Icon(Icons.delete),
+              onPressed: onLeadingPressed,
+              icon: Icon(leadingIcon),
             ),
           ],
     );
