@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -13,23 +14,18 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      onTap: onItemSelected,
+    return ConvexAppBar(
+      style: TabStyle.reactCircle, // o el estilo que prefieras
       items: [
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.home),
-          label: AppLocalizations.of(context)!.home,
-        ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.monetization_on),
-          label: AppLocalizations.of(context)!.myLoans,
-        ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.favorite),
-          label: AppLocalizations.of(context)!.donate,
-        ),
+        TabItem(icon: Icons.home, title: AppLocalizations.of(context)!.home),
+        TabItem(
+            icon: Icons.monetization_on,
+            title: AppLocalizations.of(context)!.myLoans),
+        TabItem(
+            icon: Icons.favorite, title: AppLocalizations.of(context)!.donate),
       ],
+      initialActiveIndex: currentIndex, // página inicial
+      onTap: onItemSelected,
     );
   }
 }
