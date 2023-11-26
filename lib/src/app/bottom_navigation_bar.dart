@@ -30,7 +30,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
           label: AppLocalizations.of(context)!.donate,
         ),
       ],
-      // Aquí puedes añadir más personalizaciones como el color de fondo, el color de los ítems, etc.
     );
   }
 }

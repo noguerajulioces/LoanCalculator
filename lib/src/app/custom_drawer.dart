@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:todo/src/screens/languages_screen.dart';
+import 'package:todo/src/utils/rating_dialog_helper.dart';
 
 class CustomDrawer extends StatelessWidget {
   final Function(int) onItemSelected;
@@ -58,7 +59,7 @@ class CustomDrawer extends StatelessWidget {
               AppLocalizations.of(context)!.rateUs,
             ),
             leading: const Icon(Icons.star),
-            onTap: () => onItemSelected(0),
+            onTap: () => RatingDialogHelper.showRatingDialog(context),
           ),
           const Spacer(),
           Container(
