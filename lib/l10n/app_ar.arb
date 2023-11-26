@@ -1,0 +1,17 @@
+{
+  "@@locale": "ar",
+  "language": "اللغة",
+  "selectLanguage": "اختر اللغة",
+  "removeAds": "إزالة الإعلانات",
+  "shareAndWin": "شارك واربح",
+  "comments": "التعليقات",
+  "rateUs": "قيمنا",
+  "home": "الرئيسية",
+  "myLoans": "قروضي",
+  "donate": "تبرع",
+  "duration": "المدة",
+  "interestRate": "معدل الفائدة",
+  "loanAmount": "مبلغ القرض",
+  "calculatePayment": "احسب الدفعة",
+  "restorePurchase": "استعادة الشراء"
+}

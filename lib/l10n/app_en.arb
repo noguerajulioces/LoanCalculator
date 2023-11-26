@@ -1,11 +1,17 @@
 {
   "@@locale": "en",
   "language": "Language",
-  "@language": {
-    "description": "The current Language"
-  },
   "selectLanguage": "Select Language",
-  "@selectLanguage": {
-    "description": "La description"
-  }
+  "removeAds": "Remove Ads",
+  "shareAndWin": "Share and Win",
+  "comments": "Comments",
+  "rateUs": "Rate Us",
+  "home": "Home",
+  "myLoans": "My Loans",
+  "donate": "Donate",
+  "duration": "Duration",
+  "interestRate": "Interest Rate",
+  "loanAmount": "Loan Amount",
+  "calculatePayment": "Calculate Payment",
+  "restorePurchase": "Restore Purchase"
 }

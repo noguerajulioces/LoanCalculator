@@ -1,11 +1,17 @@
 {
   "@@locale": "zh",
-  "language": "Idioma",
-  "@language": {
-    "description": "The current Language"
-  },
-  "selectLanguage": "Selecciona el idima",
-  "@selectLanguage": {
-    "description": "La description"
-  }
+  "language": "语言",
+  "selectLanguage": "选择语言",
+  "removeAds": "去除广告",
+  "shareAndWin": "分享并赢取",
+  "comments": "评论",
+  "rateUs": "给我们评分",
+  "home": "首页",
+  "myLoans": "我的贷款",
+  "donate": "捐赠",
+  "duration": "持续时间",
+  "interestRate": "利率",
+  "loanAmount": "贷款金额",
+  "calculatePayment": "计算付款",
+  "restorePurchase": "恢复购买"
 }

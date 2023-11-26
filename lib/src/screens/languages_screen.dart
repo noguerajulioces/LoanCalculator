@@ -11,10 +11,7 @@ class LanguageScreen extends StatefulWidget {
 class _LanguageScreenState extends State<LanguageScreen> {
   List<Locale> get supportedLocales => AppLocalizations.supportedLocales;
 
-  void _changeLanguage(Locale locale) {
-    // Aquí implementas la lógica para cambiar el idioma.
-    // Esto podría implicar notificar a tu sistema de gestión de estado o reiniciar la aplicación.
-  }
+  void _changeLanguage(Locale locale) {}
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +41,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
   }
 
   String _getLanguageName(Locale locale) {
-    // Aquí mapeas los códigos de idioma a nombres legibles
     switch (locale.languageCode) {
       case 'en':
         return 'English';
@@ -52,7 +48,20 @@ class _LanguageScreenState extends State<LanguageScreen> {
         return 'Spanish';
       case 'zh':
         return 'Chinese';
-      // Añade más casos según los idiomas que soportes
+      case 'hi':
+        return 'Hindi';
+      case 'ar':
+        return 'Arabic';
+      case 'pt':
+        return 'Portuguese';
+      case 'ru':
+        return 'Russian';
+      case 'fr':
+        return 'French';
+      case 'de':
+        return 'German';
+      case 'ja':
+        return 'Japanese';
       default:
         return 'Unknown';
     }

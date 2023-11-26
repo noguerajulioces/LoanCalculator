@@ -1,0 +1,17 @@
+{
+  "@@locale": "de",
+  "language": "Sprache",
+  "selectLanguage": "Sprache auswählen",
+  "removeAds": "Anzeigen entfernen",
+  "shareAndWin": "Teilen und gewinnen",
+  "comments": "Kommentare",
+  "rateUs": "Bewerten Sie uns",
+  "home": "Startseite",
+  "myLoans": "Meine Darlehen",
+  "donate": "Spenden",
+  "duration": "Dauer",
+  "interestRate": "Zinssatz",
+  "loanAmount": "Darlehensbetrag",
+  "calculatePayment": "Zahlung berechnen",
+  "restorePurchase": "Kauf wiederherstellen"
+}

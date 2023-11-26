@@ -1,11 +1,17 @@
 {
   "@@locale": "es",
   "language": "Idioma",
-  "@language": {
-    "description": "The current Language"
-  },
-  "selectLanguage": "Selecciona el idima",
-  "@selectLanguage": {
-    "description": "La description"
-  }
+  "selectLanguage": "Selecciona el idioma",
+  "removeAds": "Quitar Anuncios",
+  "shareAndWin": "Comparte y gana",
+  "comments": "Comentarios",
+  "rateUs": "Califícanos",
+  "home": "Inicio",
+  "myLoans": "Mis Préstamos",
+  "donate": "Donar",
+  "duration": "Duración",
+  "interestRate": "Tasa de Interés",
+  "loanAmount": "Cantidad del Préstamo",
+  "calculatePayment": "Calcular tu pago",
+  "restorePurchase": "Restaurar Compra"
 }

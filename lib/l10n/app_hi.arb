@@ -1,0 +1,17 @@
+{
+  "@@locale": "hi",
+  "language": "भाषा",
+  "selectLanguage": "भाषा चुनें",
+  "removeAds": "विज्ञापन हटाएं",
+  "shareAndWin": "शेयर करें और जीतें",
+  "comments": "टिप्पणियाँ",
+  "rateUs": "हमें रेट करें",
+  "home": "होम",
+  "myLoans": "मेरे ऋण",
+  "donate": "दान करें",
+  "duration": "अवधि",
+  "interestRate": "ब्याज दर",
+  "loanAmount": "ऋण राशि",
+  "calculatePayment": "भुगतान की गणना करें",
+  "restorePurchase": "खरीदारी पुनर्स्थापित करें"
+}

@@ -1,0 +1,17 @@
+{
+  "@@locale": "ja",
+  "language": "言語",
+  "selectLanguage": "言語を選択",
+  "removeAds": "広告を削除",
+  "shareAndWin": "共有して勝つ",
+  "comments": "コメント",
+  "rateUs": "私たちを評価する",
+  "home": "ホーム",
+  "myLoans": "私のローン",
+  "donate": "寄付する",
+  "duration": "期間",
+  "interestRate": "利率",
+  "loanAmount": "ローン金額",
+  "calculatePayment": "支払いを計算する",
+  "restorePurchase": "購入を復元する"
+}

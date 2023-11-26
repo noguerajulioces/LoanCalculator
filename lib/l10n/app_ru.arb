@@ -1,0 +1,17 @@
+{
+  "@@locale": "ru",
+  "language": "Язык",
+  "selectLanguage": "Выберите язык",
+  "removeAds": "Убрать рекламу",
+  "shareAndWin": "Поделитесь и выиграйте",
+  "comments": "Комментарии",
+  "rateUs": "Оцените нас",
+  "home": "Домой",
+  "myLoans": "Мои займы",
+  "donate": "Пожертвовать",
+  "duration": "Продолжительность",
+  "interestRate": "Процентная ставка",
+  "loanAmount": "Сумма займа",
+  "calculatePayment": "Рассчитать платеж",
+  "restorePurchase": "Восстановить покупку"
+}
