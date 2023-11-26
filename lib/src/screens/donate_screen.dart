@@ -21,14 +21,13 @@ class DonateScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
               'La Calculadora de Préstamos es completamente gratis y estamos trabajando muy duro para hacer nuevas aplicaciones! Si te gusta nuestra aplicación, puedes apoyar a nuestro equipo con un poco de amor para alimentar nuestros esfuerzos! A cambio, vamos a habilitar las notificaciones sobre cuándo tienes que pagar tus préstamos y eliminaremos los anuncios!',
-              // El resto del texto explicativo
             ),
           ),
           const SizedBox(height: 20),
           Center(
             child: Image.asset(
-              'assets/dog.png', // Asegúrate de tener una imagen de perro en tus assets
-              height: 200, // Ajusta la altura según sea necesario
+              'assets/dog.png',
+              height: 200,
             ),
           ),
           const SizedBox(height: 20),
