@@ -5,6 +5,7 @@ import '../screens/donate_screen.dart';
 import '../app/bottom_navigation_bar.dart';
 import '../app/app_bar.dart';
 import '../app/custom_drawer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainContainerScreen extends StatefulWidget {
   const MainContainerScreen({super.key});
@@ -23,13 +24,6 @@ class _MainContainerScreenState extends State<MainContainerScreen> {
     const DonateScreen(),
   ];
 
-  // Lista de titles
-  final List<String> _titles = [
-    'Préstamos',
-    'Mis préstamos',
-    'Donar',
-  ];
-
   void _onItemTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -38,9 +32,16 @@ class _MainContainerScreenState extends State<MainContainerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Lista de titles
+    final List<String> titles = [
+      AppLocalizations.of(context)!.home,
+      AppLocalizations.of(context)!.myLoans,
+      AppLocalizations.of(context)!.donate,
+    ];
+
     return Scaffold(
       appBar: CustomAppBar(
-        title: _titles[_currentIndex],
+        title: titles[_currentIndex],
       ),
       body: IndexedStack(
         index: _currentIndex,

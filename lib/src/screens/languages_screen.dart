@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/src/providers/localeProvider.dart';
+import 'package:todo/src/services/preferences_service.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -13,29 +14,34 @@ class LanguageScreen extends StatefulWidget {
 class _LanguageScreenState extends State<LanguageScreen> {
   List<Locale> get supportedLocales => AppLocalizations.supportedLocales;
 
-  void _changeLanguage(Locale locale) {
+  void _changeLanguage(Locale locale) async {
     final provider = Provider.of<LocaleProvider>(context, listen: false);
     provider.setLocale(locale);
+
+    String languageCode = locale.languageCode;
+    await saveLanguage(languageCode);
   }
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.language),
-        // title: const Text('Hola'),
       ),
       body: ListView.builder(
         itemCount: supportedLocales.length,
         itemBuilder: (context, index) {
           var locale = supportedLocales[index];
-          String languageName = _getLanguageName(
-              locale); // Función para obtener el nombre del idioma
+          String languageName = _getLanguageName(locale);
           return ListTile(
             title: Text(
               languageName,
               style: const TextStyle(fontSize: 18),
             ),
+            trailing:
+                provider.locale == locale ? const Icon(Icons.check) : null,
             onTap: () {
               _changeLanguage(locale);
             },
