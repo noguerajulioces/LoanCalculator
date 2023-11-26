@@ -19,10 +19,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.black12,
-      title: Text(title),
+      backgroundColor: Colors.blueAccent,
+      title: Text(
+        title,
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       leading: IconButton(
-        icon: const Icon(Icons.menu),
+        icon: const Icon(
+          Icons.menu,
+          color: Colors.white,
+        ),
         onPressed: onMenuPressed ??
             () => Scaffold.of(context)
                 .openDrawer(), // Esta es la acción correcta para abrir el Drawer.
@@ -31,7 +40,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           [
             IconButton(
               onPressed: onLeadingPressed,
-              icon: Icon(leadingIcon),
+              icon: Icon(
+                leadingIcon,
+                color: Colors.white,
+              ),
             ),
           ],
     );
