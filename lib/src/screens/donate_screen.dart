@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DonateScreen extends StatelessWidget {
   const DonateScreen({super.key});
@@ -71,7 +72,9 @@ class DonateScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue, // Color del botón
               ),
-              child: const Text('RESTAURAR COMPRA'),
+              child: Text(
+                AppLocalizations.of(context)!.restorePurchase,
+              ),
             ),
           ),
         ],
