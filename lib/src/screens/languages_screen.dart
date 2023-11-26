@@ -34,7 +34,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
         itemCount: supportedLocales.length,
         itemBuilder: (context, index) {
           var locale = supportedLocales[index];
-          String languageName = _getLanguageName(locale);
+          String languageName = _getLanguageName(locale, context);
           return ListTile(
             title: Text(
               languageName,
@@ -51,28 +51,28 @@ class _LanguageScreenState extends State<LanguageScreen> {
     );
   }
 
-  String _getLanguageName(Locale locale) {
+  String _getLanguageName(Locale locale, BuildContext context) {
     switch (locale.languageCode) {
       case 'en':
-        return 'English';
+        return AppLocalizations.of(context)!.languageEnglish;
       case 'es':
-        return 'Spanish';
+        return AppLocalizations.of(context)!.languageSpanish;
       case 'zh':
-        return 'Chinese';
+        return AppLocalizations.of(context)!.languageChinese;
       case 'hi':
-        return 'Hindi';
+        return AppLocalizations.of(context)!.languageHindi;
       case 'ar':
-        return 'Arabic';
+        return AppLocalizations.of(context)!.languageArabic;
       case 'pt':
-        return 'Portuguese';
+        return AppLocalizations.of(context)!.languagePortuguese;
       case 'ru':
-        return 'Russian';
+        return AppLocalizations.of(context)!.languageRussian;
       case 'fr':
-        return 'French';
+        return AppLocalizations.of(context)!.languageFrench;
       case 'de':
-        return 'German';
+        return AppLocalizations.of(context)!.languageGerman;
       case 'ja':
-        return 'Japanese';
+        return AppLocalizations.of(context)!.languageJapanese;
       default:
         return 'Unknown';
     }

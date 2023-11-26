@@ -14,5 +14,15 @@
   "interestRate": "Tasa de Interés",
   "loanAmount": "Cantidad del Préstamo",
   "calculatePayment": "Calcular tu pago",
-  "restorePurchase": "Restaurar Compra"
+  "restorePurchase": "Restaurar Compra",
+  "languageEnglish": "Inglés",
+  "languageSpanish": "Español",
+  "languageChinese": "Chino",
+  "languageHindi": "Hindi",
+  "languageArabic": "Árabe",
+  "languagePortuguese": "Portugués",
+  "languageRussian": "Ruso",
+  "languageFrench": "Francés",
+  "languageGerman": "Alemán",
+  "languageJapanese": "Japonés"
 }

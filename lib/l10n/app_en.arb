@@ -14,5 +14,15 @@
   "interestRate": "Interest Rate",
   "loanAmount": "Loan Amount",
   "calculatePayment": "Calculate Payment",
-  "restorePurchase": "Restore Purchase"
+  "restorePurchase": "Restore Purchase",
+  "languageEnglish": "English",
+  "languageSpanish": "Spanish",
+  "languageChinese": "Chinese",
+  "languageHindi": "Hindi",
+  "languageArabic": "Arabic",
+  "languagePortuguese": "Portuguese",
+  "languageRussian": "Russian",
+  "languageFrench": "French",
+  "languageGerman": "German",
+  "languageJapanese": "Japanese"
 }
