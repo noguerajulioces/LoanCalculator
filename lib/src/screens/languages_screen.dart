@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/src/providers/localeProvider.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -11,7 +13,10 @@ class LanguageScreen extends StatefulWidget {
 class _LanguageScreenState extends State<LanguageScreen> {
   List<Locale> get supportedLocales => AppLocalizations.supportedLocales;
 
-  void _changeLanguage(Locale locale) {}
+  void _changeLanguage(Locale locale) {
+    final provider = Provider.of<LocaleProvider>(context, listen: false);
+    provider.setLocale(locale);
+  }
 
   @override
   Widget build(BuildContext context) {
