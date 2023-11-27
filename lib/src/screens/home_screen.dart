@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
+import 'package:todo/src/models/loan_calculator.dart';
 import 'dart:math';
-import 'package:intl/intl.dart';
 import 'package:todo/src/screens/AmortizationTableScreen.dart';
+import 'package:todo/src/utils/number_formatting.dart';
 
 String getLocalCurrencySymbol() {
   var format = NumberFormat.simpleCurrency(locale: Intl.systemLocale);
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _interestRateController = TextEditingController();
   final TextEditingController _durationController = TextEditingController();
+  final LoanCalculator _calculator = LoanCalculator();
 
   @override
   void dispose() {
@@ -31,31 +33,21 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  void _calculateLoan() {
+  void calculateAndShowLoanDetails() {
     double amount = double.tryParse(_amountController.text) ?? 0;
     double interestRate = double.tryParse(_interestRateController.text) ?? 0;
-    double duration = double.tryParse(_durationController.text) ?? 0;
+    int duration = int.tryParse(_durationController.text) ?? 0;
 
-    double monthlyInterestRate = interestRate / 12 / 100;
-    double monthlyPayment = 0;
+    double monthlyPayment =
+        _calculator.calculateMonthlyPayment(amount, interestRate, duration);
+    double totalPayment =
+        _calculator.calculateTotalPayment(monthlyPayment, duration);
+    double totalInterest =
+        _calculator.calculateTotalInterest(totalPayment, amount);
 
-    if (monthlyInterestRate > 0) {
-      monthlyPayment = amount *
-          monthlyInterestRate /
-          (1 - pow(1 + monthlyInterestRate, -duration));
-    } else {
-      monthlyPayment = amount / duration;
-    }
-
-    double totalPayment = monthlyPayment * duration;
-    double totalInterest = totalPayment - amount;
-
-    final formatter = NumberFormat(
-        "#,##0.00", "es_ES"); // Cambia "es_ES" por tu locale si es necesario
-
-    String monthlyPaymentStr = formatter.format(monthlyPayment);
-    String totalPaymentStr = formatter.format(totalPayment);
-    String totalInterestStr = formatter.format(totalInterest);
+    String monthlyPaymentStr = formatNumber(monthlyPayment);
+    String totalPaymentStr = formatNumber(totalPayment);
+    String totalInterestStr = formatNumber(totalInterest);
 
     _showLoanDetailsDialog(
         monthlyPaymentStr, totalPaymentStr, totalInterestStr);
@@ -145,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _calculateLoan,
+              onPressed: calculateAndShowLoanDetails,
               child: Text(AppLocalizations.of(context)!.calculatePayment),
             ),
           ],
@@ -169,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
         prefixText: coinSymbol,
         border: const OutlineInputBorder(),
       ),
-      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
       ],
