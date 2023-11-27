@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
+import 'dart:math';
+import 'package:intl/intl.dart';
+import 'package:todo/src/screens/AmortizationTableScreen.dart';
 
 String getLocalCurrencySymbol() {
   var format = NumberFormat.simpleCurrency(locale: Intl.systemLocale);
@@ -20,8 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _interestRateController = TextEditingController();
   final TextEditingController _durationController = TextEditingController();
 
-  String _result = '';
-
   @override
   void dispose() {
     _amountController.dispose();
@@ -35,11 +36,79 @@ class _HomeScreenState extends State<HomeScreen> {
     double interestRate = double.tryParse(_interestRateController.text) ?? 0;
     double duration = double.tryParse(_durationController.text) ?? 0;
 
-    double total = amount * (1 + (interestRate / 100) * duration);
+    double monthlyInterestRate = interestRate / 12 / 100;
+    double monthlyPayment = 0;
 
-    setState(() {
-      _result = 'Total a pagar: $total';
-    });
+    if (monthlyInterestRate > 0) {
+      monthlyPayment = amount *
+          monthlyInterestRate /
+          (1 - pow(1 + monthlyInterestRate, -duration));
+    } else {
+      monthlyPayment = amount / duration;
+    }
+
+    double totalPayment = monthlyPayment * duration;
+    double totalInterest = totalPayment - amount;
+
+    final formatter = NumberFormat(
+        "#,##0.00", "es_ES"); // Cambia "es_ES" por tu locale si es necesario
+
+    String monthlyPaymentStr = formatter.format(monthlyPayment);
+    String totalPaymentStr = formatter.format(totalPayment);
+    String totalInterestStr = formatter.format(totalInterest);
+
+    _showLoanDetailsDialog(
+        monthlyPaymentStr, totalPaymentStr, totalInterestStr);
+  }
+
+  void _showLoanDetailsDialog(
+      String monthlyPayment, String totalPayment, String totalInterest) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Detalles del Préstamo'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Pago Mensual: $monthlyPayment'),
+                Text('Total a pagar: $totalPayment'),
+                Text('Total de interés: $totalInterest')
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Mostrar Tabla de Amortización'),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AmortizationTableScreen(
+                      amount: double.tryParse(_amountController.text) ?? 0,
+                      interestRate:
+                          double.tryParse(_interestRateController.text) ?? 0,
+                      duration: double.tryParse(_durationController.text) ?? 0,
+                    ),
+                  ),
+                );
+              },
+            ),
+            TextButton(
+              child: const Text('Guardar Préstamo'),
+              onPressed: () {
+                // Acción para guardar el préstamo
+              },
+            ),
+            TextButton(
+              child: const Text('Cerrar'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Cierra el diálogo
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -79,8 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: _calculateLoan,
               child: Text(AppLocalizations.of(context)!.calculatePayment),
             ),
-            const SizedBox(height: 20),
-            Text(_result),
           ],
         ),
       ),
