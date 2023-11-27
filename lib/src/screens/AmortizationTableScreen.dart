@@ -45,9 +45,9 @@ class AmortizationTableScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tabla de Amortización'),
+        title: const Text('Tabla de Amortización'),
       ),
-      body: ListView.builder(
+      body: ListView.separated(
         itemCount: amortizationSchedule.length,
         itemBuilder: (context, index) {
           var item = amortizationSchedule[index];
@@ -55,8 +55,12 @@ class AmortizationTableScreen extends StatelessWidget {
             title: Text('Mes ${item['month']}'),
             subtitle: Text(
                 'Pago: ${item['payment'].toStringAsFixed(2)}, Interés: ${item['interest'].toStringAsFixed(2)}, Principal: ${item['principal'].toStringAsFixed(2)}, Balance: ${item['balance'].toStringAsFixed(2)}'),
+            leading: Icon(Icons.check),
           );
         },
+        separatorBuilder: (BuildContext context, int index) => const Divider(
+          color: Colors.lightBlue,
+        ),
       ),
     );
   }
