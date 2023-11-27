@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:todo/src/models/loan_calculator.dart';
-import 'dart:math';
 import 'package:todo/src/screens/AmortizationTableScreen.dart';
 import 'package:todo/src/utils/number_formatting.dart';
 
