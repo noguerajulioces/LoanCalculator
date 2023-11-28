@@ -55,7 +55,8 @@ class AmortizationTableScreen extends StatelessWidget {
             title: Text('Mes ${item['month']}'),
             subtitle: Text(
                 'Pago: ${item['payment'].toStringAsFixed(2)}, Interés: ${item['interest'].toStringAsFixed(2)}, Principal: ${item['principal'].toStringAsFixed(2)}, Balance: ${item['balance'].toStringAsFixed(2)}'),
-            leading: Icon(Icons.check),
+            leading: const Icon(Icons.read_more_outlined),
+            trailing: const Icon(Icons.abc),
           );
         },
         separatorBuilder: (BuildContext context, int index) => const Divider(
