@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'package:intl/intl.dart';
+import 'dart:math';
+import '../utils/number_formatting.dart';
 
 class AmortizationTableScreen extends StatelessWidget {
   final double amount;
@@ -32,7 +33,7 @@ class AmortizationTableScreen extends StatelessWidget {
 
       schedule.add({
         'month': month,
-        'paymentDate': DateFormat('yyyy-MM-dd').format(paymentDate),
+        'paymentDate': DateFormat('dd/MM/yyyy').format(paymentDate),
         'payment': monthlyPayment,
         'interest': interest,
         'principal': principal,
@@ -56,24 +57,32 @@ class AmortizationTableScreen extends StatelessWidget {
         title: const Text('Tabla de Amortización'),
       ),
       body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          columns: const [
-            DataColumn(label: Text('#')),
-            DataColumn(label: Text('Fecha')),
-            DataColumn(label: Text('Capital')),
-            DataColumn(label: Text('Interés')),
-            DataColumn(label: Text('Balance')),
-          ],
-          rows: amortizationSchedule.map((item) {
-            return DataRow(cells: [
-              DataCell(Text(item['month'].toString())),
-              DataCell(Text(item['paymentDate'])),
-              DataCell(Text(item['principal'].toStringAsFixed(2))),
-              DataCell(Text(item['interest'].toStringAsFixed(2))),
-              DataCell(Text(item['balance'].toStringAsFixed(2))),
-            ]);
-          }).toList(),
+        child: ConstrainedBox(
+          constraints:
+              BoxConstraints(maxWidth: MediaQuery.of(context).size.width),
+          child: DataTable(
+            columnSpacing: 12,
+            dataRowMinHeight: 48,
+            dataRowMaxHeight: 64,
+            headingRowHeight: 40,
+            horizontalMargin: 16,
+            columns: const [
+              DataColumn(label: Text('#')),
+              DataColumn(label: Text('Fecha')),
+              DataColumn(label: Text('Capital')),
+              DataColumn(label: Text('Interés')),
+              DataColumn(label: Text('Balance')),
+            ],
+            rows: amortizationSchedule.map((item) {
+              return DataRow(cells: [
+                DataCell(Text(item['month'].toString())),
+                DataCell(Text(item['paymentDate'].toString())),
+                DataCell(Text(formatNumber(item['principal']))),
+                DataCell(Text(formatNumber(item['interest']))),
+                DataCell(Text(formatNumber(item['balance']))),
+              ]);
+            }).toList(),
+          ),
         ),
       ),
     );
