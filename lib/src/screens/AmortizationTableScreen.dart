@@ -46,7 +46,7 @@ class AmortizationTableScreen extends StatelessWidget {
         'balance': balance > 0 ? balance : 0,
       });
 
-      if (month % 12 == 0) {
+      if (month % 12 == 0 || month == duration) {
         schedule.add({
           'month': 'Año ${month ~/ 12}',
           'paymentDate': '',
