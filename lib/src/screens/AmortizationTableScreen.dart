@@ -26,10 +26,16 @@ class AmortizationTableScreen extends StatelessWidget {
         (1 - pow(1 + monthlyInterestRate, -duration));
     DateTime paymentDate = startDate;
 
+    double yearlyInterest = 0;
+    double yearlyPrincipal = 0;
+
     for (int month = 1; month <= duration; month++) {
       double interest = balance * monthlyInterestRate;
       double principal = monthlyPayment - interest;
       balance -= principal;
+
+      yearlyInterest += interest;
+      yearlyPrincipal += principal;
 
       schedule.add({
         'month': month,
@@ -39,6 +45,22 @@ class AmortizationTableScreen extends StatelessWidget {
         'principal': principal,
         'balance': balance > 0 ? balance : 0,
       });
+
+      if (month % 12 == 0) {
+        schedule.add({
+          'month': 'Año ${month ~/ 12}',
+          'paymentDate': '',
+          'payment': '',
+          'interest': yearlyInterest,
+          'principal': yearlyPrincipal,
+          'balance': '',
+          'isYearlyTotal': true, // Indicador de fila de total anual
+        });
+
+        // Restablecer totales anuales
+        yearlyInterest = 0;
+        yearlyPrincipal = 0;
+      }
 
       paymentDate =
           DateTime(paymentDate.year, paymentDate.month + 1, paymentDate.day);
@@ -55,32 +77,75 @@ class AmortizationTableScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tabla de Amortización'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              print("hola");
+            },
+            child: Text('Exportar'),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints:
               BoxConstraints(maxWidth: MediaQuery.of(context).size.width),
           child: DataTable(
-            columnSpacing: 12,
+            columnSpacing: 6,
             dataRowMinHeight: 48,
             dataRowMaxHeight: 64,
             headingRowHeight: 40,
-            horizontalMargin: 16,
+            horizontalMargin: 20,
             columns: const [
-              DataColumn(label: Text('#')),
-              DataColumn(label: Text('Fecha')),
-              DataColumn(label: Text('Capital')),
-              DataColumn(label: Text('Interés')),
-              DataColumn(label: Text('Balance')),
+              DataColumn(label: Center(child: Text('#'))),
+              DataColumn(label: Center(child: Text('Fecha'))),
+              DataColumn(label: Center(child: Text('Capital'))),
+              DataColumn(label: Center(child: Text('Interés'))),
+              DataColumn(label: Center(child: Text('Balance'))),
             ],
             rows: amortizationSchedule.map((item) {
-              return DataRow(cells: [
-                DataCell(Text(item['month'].toString())),
-                DataCell(Text(item['paymentDate'].toString())),
-                DataCell(Text(formatNumber(item['principal']))),
-                DataCell(Text(formatNumber(item['interest']))),
-                DataCell(Text(formatNumber(item['balance']))),
-              ]);
+              if (item.containsKey('isYearlyTotal')) {
+                return DataRow(
+                    color:
+                        MaterialStateColor.resolveWith((states) => Colors.blue),
+                    cells: [
+                      const DataCell(Text('')),
+                      DataCell(Text(
+                        "${item['month'].toString()}",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      )),
+                      DataCell(
+                        Text(
+                          formatNumber(item['principal']),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      DataCell(
+                        Text(
+                          formatNumber(item['interest']),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const DataCell(Text('')),
+                    ]);
+              } else {
+                return DataRow(cells: [
+                  DataCell(Text(item['month'].toString())),
+                  DataCell(Text(item['paymentDate'].toString())),
+                  DataCell(Text(formatNumber(item['principal']))),
+                  DataCell(Text(formatNumber(item['interest']))),
+                  DataCell(Text(formatNumber(item['balance']))),
+                ]);
+              }
             }).toList(),
           ),
         ),
