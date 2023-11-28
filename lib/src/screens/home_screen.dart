@@ -79,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       interestRate:
                           double.tryParse(_interestRateController.text) ?? 0,
                       duration: double.tryParse(_durationController.text) ?? 0,
+                      startDate: DateTime.now(),
                     ),
                   ),
                 );

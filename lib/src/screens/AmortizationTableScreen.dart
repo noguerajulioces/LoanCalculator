@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:intl/intl.dart';
 
 class AmortizationTableScreen extends StatelessWidget {
   final double amount;
   final double interestRate;
   final double duration;
+  final DateTime startDate;
 
   const AmortizationTableScreen({
     super.key,
     required this.amount,
     required this.interestRate,
     required this.duration,
+    required this.startDate,
   });
 
   List<Map<String, dynamic>> _calculateAmortizationSchedule() {
@@ -20,6 +23,7 @@ class AmortizationTableScreen extends StatelessWidget {
     double monthlyPayment = amount *
         monthlyInterestRate /
         (1 - pow(1 + monthlyInterestRate, -duration));
+    DateTime paymentDate = startDate;
 
     for (int month = 1; month <= duration; month++) {
       double interest = balance * monthlyInterestRate;
@@ -28,11 +32,15 @@ class AmortizationTableScreen extends StatelessWidget {
 
       schedule.add({
         'month': month,
+        'paymentDate': DateFormat('yyyy-MM-dd').format(paymentDate),
         'payment': monthlyPayment,
         'interest': interest,
         'principal': principal,
         'balance': balance > 0 ? balance : 0,
       });
+
+      paymentDate =
+          DateTime(paymentDate.year, paymentDate.month + 1, paymentDate.day);
     }
 
     return schedule;
@@ -47,20 +55,25 @@ class AmortizationTableScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Tabla de Amortización'),
       ),
-      body: ListView.separated(
-        itemCount: amortizationSchedule.length,
-        itemBuilder: (context, index) {
-          var item = amortizationSchedule[index];
-          return ListTile(
-            title: Text('Mes ${item['month']}'),
-            subtitle: Text(
-                'Pago: ${item['payment'].toStringAsFixed(2)}, Interés: ${item['interest'].toStringAsFixed(2)}, Principal: ${item['principal'].toStringAsFixed(2)}, Balance: ${item['balance'].toStringAsFixed(2)}'),
-            leading: const Icon(Icons.read_more_outlined),
-            trailing: const Icon(Icons.abc),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) => const Divider(
-          color: Colors.lightBlue,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(
+          columns: const [
+            DataColumn(label: Text('#')),
+            DataColumn(label: Text('Fecha')),
+            DataColumn(label: Text('Capital')),
+            DataColumn(label: Text('Interés')),
+            DataColumn(label: Text('Balance')),
+          ],
+          rows: amortizationSchedule.map((item) {
+            return DataRow(cells: [
+              DataCell(Text(item['month'].toString())),
+              DataCell(Text(item['paymentDate'])),
+              DataCell(Text(item['principal'].toStringAsFixed(2))),
+              DataCell(Text(item['interest'].toStringAsFixed(2))),
+              DataCell(Text(item['balance'].toStringAsFixed(2))),
+            ]);
+          }).toList(),
         ),
       ),
     );
