@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:todo/src/models/generate_pdf.dart';
 import 'dart:math';
 import '../utils/number_formatting.dart';
 
@@ -80,7 +81,7 @@ class AmortizationTableScreen extends StatelessWidget {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              print("hola");
+              generateAmortizationPdf(amortizationSchedule);
             },
             child: Text('Exportar'),
           ),
@@ -113,7 +114,6 @@ class AmortizationTableScreen extends StatelessWidget {
                       DataCell(Text(
                         "${item['month'].toString()}",
                         style: const TextStyle(
-                          fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       )),
@@ -121,7 +121,6 @@ class AmortizationTableScreen extends StatelessWidget {
                         Text(
                           formatNumber(item['principal']),
                           style: const TextStyle(
-                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
@@ -130,7 +129,6 @@ class AmortizationTableScreen extends StatelessWidget {
                         Text(
                           formatNumber(item['interest']),
                           style: const TextStyle(
-                            fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
                         ),
